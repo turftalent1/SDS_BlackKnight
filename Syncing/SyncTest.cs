@@ -11,8 +11,8 @@ namespace DeveloperSample.Syncing
         {
             var debug = new SyncDebug();
             var items = new List<string> { "one", "two" };
-            var result = debug.InitializeList(items);
-            Assert.Equal(items.Count, result.Count);
+            var result = debug.InitializeListAsync(items);
+            Assert.Equal(items.Count, result.Result.Count);
         }
 
         [Fact(Skip="Not implemented")]

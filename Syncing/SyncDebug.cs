@@ -9,10 +9,10 @@ namespace DeveloperSample.Syncing
 {
     public class SyncDebug
     {
-        public List<string> InitializeList(IEnumerable<string> items)
+        public async Task<List<string>> InitializeListAsync(IEnumerable<string> items)
         {
             var bag = new ConcurrentBag<string>();
-            Parallel.ForEach(items, async i =>
+            await Parallel.ForEachAsync(items, async (i, token) =>
             {
                 var r = await Task.Run(() => i).ConfigureAwait(false);
                 bag.Add(r);
